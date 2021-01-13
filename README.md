@@ -4,7 +4,7 @@
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-authentication_authorization-python?repoName=osisoft%2Fsample-ocs-authentication_authorization-python&branchName=master)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2611&repoName=osisoft%2Fsample-ocs-authentication_authorization-python&branchName=master)
 
-This sample uses the OAuth2/OIDC Authorization Code Flow + PKCE to obtain an access token. See the authentication [README](https://github.com/osisoft/OSI-Samples-OCS/blob/master/docs/AUTHENTICATION_README.md) for more information about this flow.
+This sample uses the OAuth2/OIDC Authorization Code Flow + PKCE to obtain an access token. See the main OCS Authentication samples page [README](https://github.com/osisoft/OSI-Samples-OCS/blob/master/docs/AUTHENTICATION_README.md) for more information about this flow.
 
 Developed against Python 3.8.2
 
