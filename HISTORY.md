@@ -1,5 +1,9 @@
 # Version History
 
+## 1.0.7 / 2021-01-25
+
+- Updated Dependencies
+
 ## 1.0.6 / 2020-09-28
 
 - Fix automated test login flow to handle optional step
