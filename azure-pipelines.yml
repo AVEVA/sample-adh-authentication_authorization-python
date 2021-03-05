@@ -2,38 +2,30 @@ trigger:
   batch: true
   branches:
     include:
-      - master
-  paths:
-    include:
-      - '/'
+      - main
 
 pr:
   branches:
     include:
-      - master
-  paths:
-    include:
-      - '/'
+      - main
 
 schedules:
   - cron: '0 0 * * 0'
     displayName: Weekly build
     branches:
       include:
-        - master
+        - main
     always: true
 
 resources:
   repositories:
-  - repository: templates
-    type: github
-    name: osisoft/OSI-Samples
-    endpoint: osisoft/OSI-Samples
+    - repository: templates
+      type: github
+      name: osisoft/OSI-Samples
+      endpoint: osisoft/OSI-Samples
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
-  - name: projPath
-    value: '/'
   - name: CredFile
     value: config.ini
   - name: CredFileLibrary
@@ -46,34 +38,19 @@ jobs:
     strategy:
       matrix:
         linux:
-          imageName: 'ubuntu-latest'
+          agentOS: Linux
         windows:
-          imageName: 'windows-latest'
+          agentOS: Windows_NT
     pool:
-      vmImage: $(imageName)
+      name: 00-OSIManaged-Containers
+      demands: Agent.OS -equals $(agentOS)
     steps:
-      # Issue in windows-latest template, see:
-      # https://developercommunity.visualstudio.com/content/problem/1170486/selenium-ui-test-can-no-longer-find-chrome-binary.html
-      - script: |
-          if not exist "C:\Program Files (x86)\Google" mkdir "C:\Program Files (x86)\Google"
-          if not exist "C:\Program Files (x86)\Google\Chrome" mkdir "C:\Program Files (x86)\Google\Chrome"
-          mklink /D "C:\Program Files (x86)\Google\Chrome\Application" "C:\Program Files\Google\Chrome\Application"
-        displayName: Set Chrome Path
-        condition: eq(variables['imageName'],'windows-latest')
-
       - template: '/miscellaneous/build_templates/config.yml@templates'
         parameters:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibrary)
-          filePath: $(projPath)
 
-      - task: UsePythonVersion@0
-        inputs:
-          versionSpec: '3.8'
-          architecture: 'x64'
-        displayName: 'Specify Python version'
-
-      - bash: |
+      - script: |
           echo Install test tools
           pip install pytest
           pip install selenium
@@ -82,16 +59,17 @@ jobs:
           echo Run tests
           python -m pytest --junitxml=junit/test-results.xml  ./test.py
           echo Complete
-        workingDirectory: $(Build.SourcesDirectory)$(projPath)/
         displayName: 'Run tests'
 
       - task: PublishTestResults@2
         inputs:
           testResultsFiles: '**/test-*.xml'
           failTaskOnFailedTests: true
+          testRunTitle: '$(Agent.JobName) on $(Agent.OS)'
         displayName: 'Publish test results'
         condition: always()
 
-  - template: '/miscellaneous/build_templates/analysis.yml@templates'
-    parameters:
-      language: python
+      - template: '/miscellaneous/build_templates/analysis.yml@templates'
+        parameters:
+          skip: eq(variables['Agent.OS'], 'Linux')
+          useRequirementsTxt: true
