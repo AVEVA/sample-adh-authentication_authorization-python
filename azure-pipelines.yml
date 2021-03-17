@@ -57,6 +57,7 @@ jobs:
       - script: |
           echo %PATH%
           echo set PATH=%PATH%;$(Build.SourcesDirectory)\node_modules\chromedriver\lib\chromedriver
+          set PATH=%PATH%;$(Build.SourcesDirectory)\node_modules\chromedriver\lib\chromedriver
           echo %PATH%
         displayName: 'Add chromedriver to PATH'
 
