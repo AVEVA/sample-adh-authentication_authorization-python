@@ -54,7 +54,10 @@ jobs:
       - script: npm install chromedriver
         displayName: 'Install chromedriver'
 
-      - script: set PATH=%PATH%;$(Build.SourcesDirectory)\node_modules\chromedriver\lib\chromedriver
+      - script: |
+          echo %PATH%
+          echo set PATH=%PATH%;$(Build.SourcesDirectory)\node_modules\chromedriver\lib\chromedriver
+          echo %PATH%
         displayName: 'Add chromedriver to PATH'
 
       - script: dir
@@ -62,7 +65,7 @@ jobs:
       - script: dir
         workingDirectory: $(Build.SourcesDirectory)\node_modules\chromedriver\lib\chromedriver
 
-      - script: echo %path%
+      - script: echo %PATH%
 
       - script: |
           echo Install test tools
