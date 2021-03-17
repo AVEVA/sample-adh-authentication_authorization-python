@@ -51,6 +51,19 @@ jobs:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibrary)
 
+      - script: npm install chromedriver
+        displayName: 'Install chromedriver'
+
+      - script: set PATH=%PATH%;$(Build.SourcesDirectory)\bin
+        displayName: 'Add chromedriver to PATH'
+
+      - script: dir
+
+      - script: dir
+        workingDirectory: $(Build.SourcesDirectory)\bin
+
+      - script: echo %path%
+
       - script: |
           echo Install test tools
           pip install pytest
