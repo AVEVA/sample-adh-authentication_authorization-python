@@ -69,6 +69,8 @@ jobs:
       - script: echo %PATH%
 
       - script: |
+          set PATH=%PATH%;$(Build.SourcesDirectory)\node_modules\chromedriver\lib\chromedriver
+          echo %PATH%
           echo Install test tools
           pip install pytest
           pip install selenium
