@@ -70,7 +70,7 @@ jobs:
       - script: |
           echo Install chromedriver
           npm install chromedriver
-          export PATH=$PATH:$(Build.SourcesDirectory)/node_modules/chromedriver/lib/chromedriver
+          export PATH=$PATH:$(Agent.WorkFolder)/node_modules/chromedriver/lib/chromedriver
           echo Install test tools
           pip install pytest
           pip install selenium
