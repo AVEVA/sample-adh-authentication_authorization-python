@@ -50,6 +50,7 @@ jobs:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibrary)
 
+      # Adds chromedriver to path in Windows Command Prompt syntax
       - script: |
           echo Install chromedriver
           npm install chromedriver
@@ -62,7 +63,24 @@ jobs:
           echo Run tests
           python -m pytest --junitxml=junit/test-results.xml  ./test.py
           echo Complete
-        displayName: 'Run tests'
+        displayName: 'Run tests (Windows)'
+        condition: eq(variables['Agent.OS'], 'Windows_NT')
+
+      # Adds chromedriver to path in Linux bash syntax
+      - script: |
+          echo Install chromedriver
+          npm install chromedriver
+          export PATH=$PATH:$(Build.SourcesDirectory)/node_modules/chromedriver/lib/chromedriver
+          echo Install test tools
+          pip install pytest
+          pip install selenium
+          echo Install requirements
+          pip install -r requirements.txt
+          echo Run tests
+          python -m pytest --junitxml=junit/test-results.xml  ./test.py
+          echo Complete
+        displayName: 'Run tests (Linux)'
+        condition: eq(variables['Agent.OS'], 'Linux')
 
       - task: PublishTestResults@2
         inputs:
