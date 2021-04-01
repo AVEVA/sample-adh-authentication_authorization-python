@@ -44,10 +44,10 @@ jobs:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibrary)
 
+      - script: npm install chromedriver
+        displayName: 'Install chromedriver'
+
       - script: |
-          echo Install chromedriver
-          npm install chromedriver
-          set PATH=%PATH%;$(Build.SourcesDirectory)\node_modules\chromedriver\lib\chromedriver
           echo Install test tools
           pip install pytest
           pip install selenium
@@ -56,6 +56,8 @@ jobs:
           echo Run tests
           python -m pytest --junitxml=junit/test-results.xml  ./test.py
           echo Complete
+        env:
+          CHROMEWEBDRIVER: $(Build.SourcesDirectory)\node_modules\chromedriver\lib\chromedriver
         displayName: 'Run tests'
 
       - task: PublishTestResults@2
@@ -71,6 +73,10 @@ jobs:
       name: 00-OSIManaged-Containers
       demands: Agent.OS -equals Windows_NT
     steps:
+      - script: pip --version
+
+      - script: python --version
+
       - template: '/miscellaneous/build_templates/analysis.yml@templates'
         parameters:
           useRequirementsTxt: true
