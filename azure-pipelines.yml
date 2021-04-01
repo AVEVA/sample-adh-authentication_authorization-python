@@ -23,6 +23,7 @@ resources:
       type: github
       name: osisoft/OSI-Samples
       endpoint: osisoft/OSI-Samples
+      ref: java-options
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
@@ -72,8 +73,6 @@ jobs:
     pool:
       name: 00-OSIManaged-Containers
       demands: Agent.OS -equals Windows_NT
-    env:
-      _JAVA_OPTIONS: -XX:UseAVX=0
     steps:
       - script: pip --version
 
