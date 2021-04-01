@@ -70,8 +70,10 @@ jobs:
 
   - job: Analysis
     pool:
-      name: 00-OSIManaged-Test
-      demands: COMPUTERNAME -equals $(buildAgent)
+      name: 00-OSIManaged-Containers
+      demands: Agent.OS -equals Windows_NT
+    env:
+      _JAVA_OPTIONS: -XX:UseAVX=0
     steps:
       - script: pip --version
 
