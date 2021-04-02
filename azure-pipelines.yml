@@ -75,6 +75,8 @@ jobs:
     steps:
       - script: pip --version
 
+      - script: pip install -r requirements.txt
+
       - script: |
           python ./pip-inspector.py --requirements=$(Build.SourcesDirectory)\requirements.txt
 
