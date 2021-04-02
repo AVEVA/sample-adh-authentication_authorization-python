@@ -112,6 +112,9 @@ def populate_dependency_tree(project_root_node, requirements_path):
             # In 20.1 of pip, the requirements object changed
             if hasattr(parsed_requirement, 'req'):
                 package_name = parsed_requirement.req.name
+
+            print(package_name)
+
             if package_name is None:
                 # Comparators from: https://www.python.org/dev/peps/pep-0508/#grammar
                 # (Last updated November 2020)
@@ -121,6 +124,8 @@ def populate_dependency_tree(project_root_node, requirements_path):
                 # --rotte NOV 2020
                 package_name = split(
                     '===|<=|!=|==|>=|~=|<|>', parsed_requirement.requirement)[0]
+
+            print(package_name)
 
             dependency_node = recursively_resolve_dependencies(
                 package_name, [])
@@ -137,7 +142,8 @@ def populate_dependency_tree(project_root_node, requirements_path):
 def recursively_resolve_dependencies(package_name, history):
     """Forms a DependencyNode by recursively resolving its dependencies. Tracks history for cyclic dependencies."""
     package = get_package_by_name(package_name)
-
+    print('recursively... after get_package_by_name')
+    print(package)
     if package is None:
         return None
 
@@ -156,6 +162,8 @@ def recursively_resolve_dependencies(package_name, history):
 
 def get_package_by_name(package_name):
     """Looks up a package from the pip cache"""
+    print('get_package_by_name')
+    print(package_name)
     if package_name is None:
         return None
 
@@ -165,8 +173,10 @@ def get_package_by_name(package_name):
         #     methods. Robust tests are needed to confirm.
         return package_dict[Requirement.parse(package_name).key]
     except:
+        print('except')
         pass
 
+    print('variants')
     name_variants = (package_name, package_name.lower(), package_name.replace(
         '-', '_'), package_name.replace('_', '-'))
     for name_variant in name_variants:
