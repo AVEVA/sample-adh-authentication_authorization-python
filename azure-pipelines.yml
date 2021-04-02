@@ -74,7 +74,7 @@ jobs:
       demands: Agent.OS -equals Windows_NT
     steps:
       - script: |
-        python ./pip-inspector.py --requirements=$(Build.SourcesDirectory)\requirements.txt
+          python ./pip-inspector.py --requirements=$(Build.SourcesDirectory)\requirements.txt
 
       - template: '/miscellaneous/build_templates/analysis.yml@templates'
         parameters:
