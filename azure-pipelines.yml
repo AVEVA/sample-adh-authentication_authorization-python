@@ -73,6 +73,8 @@ jobs:
       name: 00-OSIManaged-Containers
       demands: Agent.OS -equals Windows_NT
     steps:
+      - script: pip --version
+
       - script: |
           python ./pip-inspector.py --requirements=$(Build.SourcesDirectory)\requirements.txt
 

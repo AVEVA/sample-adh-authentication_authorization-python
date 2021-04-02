@@ -109,6 +109,10 @@ def populate_dependency_tree(project_root_node, requirements_path):
         for parsed_requirement in parsed_requirements:
             package_name = None
 
+            print('populate_dependency_tree')
+            print(parsed_requirements)
+            print(requirements_path)
+
             # In 20.1 of pip, the requirements object changed
             if hasattr(parsed_requirement, 'req'):
                 package_name = parsed_requirement.req.name
