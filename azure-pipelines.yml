@@ -44,7 +44,7 @@ jobs:
           fileOriginal: $(CredFile)
           fileLibrary: $(CredFileLibrary)
 
-      - script: npm install chromedriver
+      - script: npm install chromedriver --detect_chromedriver_version
         displayName: 'Install chromedriver'
 
       - script: |
