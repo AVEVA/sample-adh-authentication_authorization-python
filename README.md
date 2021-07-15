@@ -1,6 +1,6 @@
 # Authorization Code Flow + PKCE Python Sample and Test
 
-**Version:** 1.0.9
+**Version:** 1.0.10
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/OCS/osisoft.sample-ocs-authentication_authorization-python?repoName=osisoft%2Fsample-ocs-authentication_authorization-python&branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2611&repoName=osisoft%2Fsample-ocs-authentication_authorization-python&branchName=main)
 
