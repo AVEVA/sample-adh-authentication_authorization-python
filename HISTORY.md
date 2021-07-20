@@ -1,5 +1,9 @@
 # Version History
 
+## 1.0.10 / 2021-07-15
+
+- Updated Dependencies
+
 ## 1.0.9 / 2021-04-19
 
 - Auto detect chrome version
