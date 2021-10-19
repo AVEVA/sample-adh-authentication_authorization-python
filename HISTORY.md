@@ -1,5 +1,9 @@
 # Version History
 
+## 1.0.12 / 2021-10-20
+
+- Readme changes
+
 ## 1.0.11 / 2021-07-21
 
 - Cleaned up gitignore
