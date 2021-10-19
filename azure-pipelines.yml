@@ -26,10 +26,6 @@ resources:
 
 variables:
   - template: '/miscellaneous/build_templates/variables.yml@templates'
-  - name: CredFile
-    value: config.ini
-  - name: CredFileLibrary
-    value: product-readiness.auth_pkce_python.ini
   - name: analysisProject
     value: Auth_PKCE_Python
 
@@ -38,11 +34,17 @@ jobs:
     pool:
       name: 00-OSIManaged-Containers
       demands: Agent.OS -equals Windows_NT
+    variables:
+      - name: Username
+        value: $(AuthorizationUsername)
+      - name: Password
+        value: $(AuthorizationPassword)
+      - name: ClientId
+        value: $(AuthorizationCodeClientId)
     steps:
-      - template: '/miscellaneous/build_templates/config.yml@templates'
+      - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          fileOriginal: $(CredFile)
-          fileLibrary: $(CredFileLibrary)
+          secrets: 'TenantId, AuthorizationCodeClientId, AuthorizationUsername, AuthorizationPassword'
 
       - script: npm install chromedriver --detect_chromedriver_version
         displayName: 'Install chromedriver'

@@ -1,11 +1,11 @@
 """This script uses Selenium to perform a test of the program.py script"""
 
-import configparser
+import json
 import time
 import unittest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from .program import main
+from .program import main, get_appsettings
 
 
 class AuthPKCEPythonSampleTests(unittest.TestCase):
@@ -21,12 +21,10 @@ class AuthPKCEPythonSampleTests(unittest.TestCase):
 def selenium_script(auth_url):
     """Automatically performs browser actions for login"""
 
-    config = configparser.ConfigParser()
-    config.read('config.ini')
+    appsettings = get_appsettings()
 
-    # Get Config
-    username = config.get('Test', 'Username')
-    password = config.get('Test', 'Password')
+    username = appsettings.get('Username')
+    password = appsettings.get('Password')
 
     # Open Chrome Webdriver, go to Auth page
     print()
