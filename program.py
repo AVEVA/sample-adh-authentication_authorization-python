@@ -1,7 +1,6 @@
 """This script performs Authorization Code + PKCE Authentication against OSIsoft Cloud Services"""
 
 import base64
-import configparser
 import hashlib
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
@@ -12,6 +11,24 @@ import webbrowser
 import requests
 
 
+def get_appsettings():
+    """Open and parse the appsettings.json file"""
+
+    # Try to open the configuration file
+    try:
+        with open(
+            'appsettings.json',
+            'r',
+        ) as f:
+            appsettings = json.load(f)
+    except Exception as error:
+        print(f'Error: {str(error)}')
+        print(f'Could not open/read appsettings.json')
+        exit()
+
+    return appsettings
+
+
 def main(test_script=None):
     """Main sample script
     Performs Authorization Code + PKCE Authentication against OSIsoft Cloud Services.
@@ -19,12 +36,11 @@ def main(test_script=None):
     """
 
     try:
-        config = configparser.ConfigParser()
-        config.read('config.ini')
+        appsettings = get_appsettings()
 
-        resource = config.get('Configuration', 'Resource')
-        tenant_id = config.get('Configuration', 'TenantId')
-        client_id = config.get('Configuration', 'ClientId')
+        resource = appsettings.get('Resource')
+        tenant_id = appsettings.get('TenantId')
+        client_id = appsettings.get('ClientId')
 
         redirect_uri = 'http://localhost:5004/callback.html'
         scope = 'openid ocsapi'
