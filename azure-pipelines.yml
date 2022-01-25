@@ -48,7 +48,7 @@ jobs:
     steps:
       - template: '/miscellaneous/build_templates/appsettings.yml@templates'
         parameters:
-          secrets: 'TenantId, AuthorizationCodeClientId, AuthorizationUsername, AuthorizationPassword'
+          secrets: 'TenantId, AuthorizationCodeClientId, AuthorizationUsername, AuthorizationPassword, Resources'
 
       - script: npm install chromedriver --detect_chromedriver_version
         displayName: 'Install chromedriver'
