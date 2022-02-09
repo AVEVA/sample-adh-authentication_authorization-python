@@ -1,4 +1,4 @@
-"""This script performs Authorization Code + PKCE Authentication against OSIsoft Cloud Services"""
+"""This script performs Authorization Code + PKCE Authentication against AVEVA Data Hub"""
 
 import base64
 import hashlib
@@ -31,7 +31,7 @@ def get_appsettings():
 
 def main(test_script=None):
     """Main sample script
-    Performs Authorization Code + PKCE Authentication against OSIsoft Cloud Services.
+    Performs Authorization Code + PKCE Authentication against AVEVA Data Hub.
     If test=True, will use Selenium to perform browser authentication automatically.
     """
 
