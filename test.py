@@ -40,28 +40,28 @@ def selenium_script(auth_url):
     # Use Personal Account (Must be enabled on Tenant)
     print()
     print('Selenium 2: Choose Personal Account')
-    browser.find_element(by=By.Xpath, value='descendant::a[@title="Personal Account"]').click()
+    browser.find_element(by=By.XPATH, value='descendant::a[@title="Personal Account"]').click()
     time.sleep(2)
 
     # Enter Username and submit
     print()
     print('Selenium 3: Enter Username')
-    browser.find_element(by=By.Xpath, value='//*[@id="i0116"]').send_keys(username)
-    browser.find_element(by=By.Xpath, value='//*[@id="idSIButton9"]').click()
+    browser.find_element(by=By.XPATH, value='//*[@id="i0116"]').send_keys(username)
+    browser.find_element(by=By.XPATH, value='//*[@id="idSIButton9"]').click()
     time.sleep(2)
 
     # Enter Password and submit
     print()
     print('Selenium 4: Enter Password')
-    browser.find_element(by=By.Xpath, value='//*[@id="i0118"]').send_keys(password)
-    elem = browser.find_element(by=By.Xpath, value='//*[@id="idSIButton9"]')
+    browser.find_element(by=By.XPATH, value='//*[@id="i0118"]').send_keys(password)
+    elem = browser.find_element(by=By.XPATH, value='//*[@id="idSIButton9"]')
     try:
         browser.set_page_load_timeout(5)
         elem.click()
 
         # Login may or may not prompt to save credentials, try this inside try/catch
         time.sleep(2)
-        browser.find_element(by=By.Xpath, value='//*[@id="idSIButton9"]').click()
+        browser.find_element(by=By.XPATH, value='//*[@id="idSIButton9"]').click()
     except Exception:
         print('Ignore time out, start the server...')
 
