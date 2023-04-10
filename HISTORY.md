@@ -1,5 +1,9 @@
 # Version History
 
+## 1.0.20 / 2023-04-10
+
+- Update Selenium login flow
+
 ## 1.0.19 / 2022-08-17
 
 - Automate dependabot approval and automerge
