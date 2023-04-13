@@ -24,7 +24,7 @@ To use the Authorization Code Flow + PKCE flow with the library, pass a client I
   - Google Chrome Web Driver is required for the automated test
 - Register an Authorization Code Client in AVEVA Data Hub and ensure that the registered client in ADH contains `http://localhost:5004/callback.html` in the list of RedirectUris
 - Configure the sample using the file [appsettings.placeholder.json](appsettings.placeholder.json). Before editing, rename this file to `appsettings.json`. This repository's `.gitignore` rules should prevent the file from ever being checked in to any fork or branch, to ensure credentials are not compromised.
-- Replace the placeholders in `appsettings.json` with your Tenant ID and Client ID
+- Replace the placeholders in `appsettings.json` with your Tenant ID and Client ID. The username and password fields are used for testing and can be left as is.
 
 ## Running the Sample
 
