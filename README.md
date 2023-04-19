@@ -3,7 +3,7 @@
 | :loudspeaker: **Notice**: Samples have been updated to reflect that they work on AVEVA Data Hub. The samples also work on OSIsoft Cloud Services unless otherwise noted. |
 | -----------------------------------------------------------------------------------------------|  
 
-**Version:** 1.0.19
+**Version:** 1.0.20
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-adh-authentication_authorization-python?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2611&branchName=main)
 
@@ -24,7 +24,7 @@ To use the Authorization Code Flow + PKCE flow with the library, pass a client I
   - Google Chrome Web Driver is required for the automated test
 - Register an Authorization Code Client in AVEVA Data Hub and ensure that the registered client in ADH contains `http://localhost:5004/callback.html` in the list of RedirectUris
 - Configure the sample using the file [appsettings.placeholder.json](appsettings.placeholder.json). Before editing, rename this file to `appsettings.json`. This repository's `.gitignore` rules should prevent the file from ever being checked in to any fork or branch, to ensure credentials are not compromised.
-- Replace the placeholders in `appsettings.json` with your Tenant ID and Client ID
+- Replace the placeholders in `appsettings.json` with your Tenant ID and Client ID. The username and password fields are used for testing and can be left as is.
 
 ## Running the Sample
 
