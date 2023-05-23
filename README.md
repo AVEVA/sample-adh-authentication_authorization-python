@@ -1,8 +1,5 @@
 # Authorization Code Flow + PKCE Python Sample and Test
 
-| :loudspeaker: **Notice**: Samples have been updated to reflect that they work on AVEVA Data Hub. The samples also work on OSIsoft Cloud Services unless otherwise noted. |
-| -----------------------------------------------------------------------------------------------|  
-
 **Version:** 1.0.20
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-adh-authentication_authorization-python?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2611&branchName=main)
