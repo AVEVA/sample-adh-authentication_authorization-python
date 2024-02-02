@@ -1,5 +1,9 @@
 # Version History
 
+## 1.0.21 / 2023-10-13
+
+- Migrate Pipelines
+
 ## 1.0.20 / 2023-04-10
 
 - Update Selenium login flow

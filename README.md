@@ -1,6 +1,6 @@
 # Authorization Code Flow + PKCE Python Sample and Test
 
-**Version:** 1.0.20
+**Version:** 1.0.21
 
 [![Build Status](https://dev.azure.com/osieng/engineering/_apis/build/status/product-readiness/ADH/aveva.sample-adh-authentication_authorization-python?branchName=main)](https://dev.azure.com/osieng/engineering/_build/latest?definitionId=2611&branchName=main)
 
